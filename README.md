@@ -1,10 +1,10 @@
 # ImageToVideoDemo
 ImageToVideoDemo is a demo for converting a set of images to video.
 
-# Installation
+## Installation
 You can include it into your project by adding the source file directly.
 
-##Usage
+## Usage
 ~~~
     NSArray *imageArr;//A array with images.
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];//The path of video.
