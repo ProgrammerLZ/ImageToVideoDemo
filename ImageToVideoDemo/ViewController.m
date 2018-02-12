@@ -7,8 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "ImagesToVideoTool.h"
+#import <AVFoundation/AVFoundation.h>
+#import <Photos/Photos.h>
+#import "SelectPhotoViewController.h"
+#import "LLVideoPlayerViewController.h"
 
-@interface ViewController ()
+
+
+
+@interface ViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @end
 
@@ -16,7 +24,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)compoundClick:(id)sender {
+    [self selectPhotos];
+}
+
+- (void) selectPhotos
+{
+
+    SelectPhotoViewController *controller = [[SelectPhotoViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:navi animated:YES completion:nil];
 }
 
 

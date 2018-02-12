@@ -13,9 +13,24 @@
 		AE5D2CCF20215DE6009E960B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE5D2CCE20215DE6009E960B /* Assets.xcassets */; };
 		AE5D2CD220215DE6009E960B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D2CD020215DE6009E960B /* LaunchScreen.storyboard */; };
 		AE5D2CD520215DE6009E960B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5D2CD420215DE6009E960B /* main.m */; };
+		AE5D2CDD20215E07009E960B /* ImagesToVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */; };
+		AE8558AD2026F66700E78A87 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE8558AC2026F66700E78A87 /* song.mp3 */; };
+		AE8558B3202829A700E78A87 /* SelectPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */; };
+		AE8558B4202829A700E78A87 /* SelectPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8558B2202829A700E78A87 /* SelectPhotoViewController.xib */; };
+		AE8558BD20282FFC00E78A87 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558BB20282FFC00E78A87 /* PhotoCell.m */; };
+		AE8558BE20282FFC00E78A87 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8558BC20282FFC00E78A87 /* PhotoCell.xib */; };
+		AE8558D3202872FD00E78A87 /* player_play.png in Resources */ = {isa = PBXBuildFile; fileRef = AE8558C7202872FC00E78A87 /* player_play.png */; };
+		AE8558D4202872FD00E78A87 /* LLAVPlayerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558C8202872FC00E78A87 /* LLAVPlayerItem.m */; };
+		AE8558D5202872FD00E78A87 /* LLAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558C9202872FC00E78A87 /* LLAVPlayerView.m */; };
+		AE8558D6202872FD00E78A87 /* back_white_small.png in Resources */ = {isa = PBXBuildFile; fileRef = AE8558CC202872FC00E78A87 /* back_white_small.png */; };
+		AE8558D7202872FD00E78A87 /* player_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = AE8558CD202872FC00E78A87 /* player_pause.png */; };
+		AE8558D8202872FD00E78A87 /* UIImage+LLAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558CE202872FC00E78A87 /* UIImage+LLAVPlayer.m */; };
+		AE8558D9202872FD00E78A87 /* LLVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558D1202872FC00E78A87 /* LLVideoPlayerViewController.m */; };
+		AE91E3DB202AF1CA00DD7200 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE91E3DA202AF1CA00DD7200 /* Tool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE5B944E2022DFB500E57CF9 /* util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		AE5D2CC220215DE6009E960B /* ImageToVideoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageToVideoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE5D2CC520215DE6009E960B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AE5D2CC620215DE6009E960B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -26,6 +41,28 @@
 		AE5D2CD120215DE6009E960B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE5D2CD320215DE6009E960B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE5D2CD420215DE6009E960B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AE5D2CDB20215E07009E960B /* ImagesToVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesToVideoTool.h; sourceTree = "<group>"; };
+		AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesToVideoTool.m; sourceTree = "<group>"; };
+		AE8558AC2026F66700E78A87 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
+		AE8558B0202829A700E78A87 /* SelectPhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectPhotoViewController.h; sourceTree = "<group>"; };
+		AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoViewController.m; sourceTree = "<group>"; };
+		AE8558B2202829A700E78A87 /* SelectPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPhotoViewController.xib; sourceTree = "<group>"; };
+		AE8558BA20282FFC00E78A87 /* PhotoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		AE8558BB20282FFC00E78A87 /* PhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		AE8558BC20282FFC00E78A87 /* PhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		AE8558C7202872FC00E78A87 /* player_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_play.png; sourceTree = "<group>"; };
+		AE8558C8202872FC00E78A87 /* LLAVPlayerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAVPlayerItem.m; sourceTree = "<group>"; };
+		AE8558C9202872FC00E78A87 /* LLAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLAVPlayerView.m; sourceTree = "<group>"; };
+		AE8558CA202872FC00E78A87 /* UIImage+LLAVPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LLAVPlayer.h"; sourceTree = "<group>"; };
+		AE8558CB202872FC00E78A87 /* LLAVPlayerItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAVPlayerItem.h; sourceTree = "<group>"; };
+		AE8558CC202872FC00E78A87 /* back_white_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_white_small.png; sourceTree = "<group>"; };
+		AE8558CD202872FC00E78A87 /* player_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_pause.png; sourceTree = "<group>"; };
+		AE8558CE202872FC00E78A87 /* UIImage+LLAVPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LLAVPlayer.m"; sourceTree = "<group>"; };
+		AE8558CF202872FC00E78A87 /* LLAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLAVPlayerView.h; sourceTree = "<group>"; };
+		AE8558D0202872FC00E78A87 /* LLVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLVideoPlayerViewController.h; sourceTree = "<group>"; };
+		AE8558D1202872FC00E78A87 /* LLVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLVideoPlayerViewController.m; sourceTree = "<group>"; };
+		AE91E3D9202AF1CA00DD7200 /* Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		AE91E3DA202AF1CA00DD7200 /* Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +95,23 @@
 		AE5D2CC420215DE6009E960B /* ImageToVideoDemo */ = {
 			isa = PBXGroup;
 			children = (
+				AE8558C4202872FC00E78A87 /* LLVideoPlayer */,
+				AE8558AC2026F66700E78A87 /* song.mp3 */,
+				AE91E3D9202AF1CA00DD7200 /* Tool.h */,
+				AE91E3DA202AF1CA00DD7200 /* Tool.m */,
+				AE5B944E2022DFB500E57CF9 /* util.h */,
+				AE8558BA20282FFC00E78A87 /* PhotoCell.h */,
+				AE8558BB20282FFC00E78A87 /* PhotoCell.m */,
+				AE8558BC20282FFC00E78A87 /* PhotoCell.xib */,
 				AE5D2CC520215DE6009E960B /* AppDelegate.h */,
 				AE5D2CC620215DE6009E960B /* AppDelegate.m */,
 				AE5D2CC820215DE6009E960B /* ViewController.h */,
 				AE5D2CC920215DE6009E960B /* ViewController.m */,
+				AE8558B0202829A700E78A87 /* SelectPhotoViewController.h */,
+				AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */,
+				AE8558B2202829A700E78A87 /* SelectPhotoViewController.xib */,
+				AE5D2CDB20215E07009E960B /* ImagesToVideoTool.h */,
+				AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */,
 				AE5D2CCB20215DE6009E960B /* Main.storyboard */,
 				AE5D2CCE20215DE6009E960B /* Assets.xcassets */,
 				AE5D2CD020215DE6009E960B /* LaunchScreen.storyboard */,
@@ -69,6 +119,32 @@
 				AE5D2CD420215DE6009E960B /* main.m */,
 			);
 			path = ImageToVideoDemo;
+			sourceTree = "<group>";
+		};
+		AE8558C4202872FC00E78A87 /* LLVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				AE8558D1202872FC00E78A87 /* LLVideoPlayerViewController.m */,
+				AE8558D0202872FC00E78A87 /* LLVideoPlayerViewController.h */,
+				AE8558C6202872FC00E78A87 /* LLAVPlayerView */,
+			);
+			path = LLVideoPlayer;
+			sourceTree = "<group>";
+		};
+		AE8558C6202872FC00E78A87 /* LLAVPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				AE8558C7202872FC00E78A87 /* player_play.png */,
+				AE8558C8202872FC00E78A87 /* LLAVPlayerItem.m */,
+				AE8558C9202872FC00E78A87 /* LLAVPlayerView.m */,
+				AE8558CA202872FC00E78A87 /* UIImage+LLAVPlayer.h */,
+				AE8558CB202872FC00E78A87 /* LLAVPlayerItem.h */,
+				AE8558CC202872FC00E78A87 /* back_white_small.png */,
+				AE8558CD202872FC00E78A87 /* player_pause.png */,
+				AE8558CE202872FC00E78A87 /* UIImage+LLAVPlayer.m */,
+				AE8558CF202872FC00E78A87 /* LLAVPlayerView.h */,
+			);
+			path = LLAVPlayerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,8 +205,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8558D3202872FD00E78A87 /* player_play.png in Resources */,
+				AE8558BE20282FFC00E78A87 /* PhotoCell.xib in Resources */,
 				AE5D2CD220215DE6009E960B /* LaunchScreen.storyboard in Resources */,
+				AE8558D6202872FD00E78A87 /* back_white_small.png in Resources */,
+				AE8558B4202829A700E78A87 /* SelectPhotoViewController.xib in Resources */,
 				AE5D2CCF20215DE6009E960B /* Assets.xcassets in Resources */,
+				AE8558AD2026F66700E78A87 /* song.mp3 in Resources */,
+				AE8558D7202872FD00E78A87 /* player_pause.png in Resources */,
 				AE5D2CCD20215DE6009E960B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,9 +224,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE8558BD20282FFC00E78A87 /* PhotoCell.m in Sources */,
+				AE8558D9202872FD00E78A87 /* LLVideoPlayerViewController.m in Sources */,
+				AE8558B3202829A700E78A87 /* SelectPhotoViewController.m in Sources */,
+				AE91E3DB202AF1CA00DD7200 /* Tool.m in Sources */,
 				AE5D2CCA20215DE6009E960B /* ViewController.m in Sources */,
 				AE5D2CD520215DE6009E960B /* main.m in Sources */,
+				AE8558D8202872FD00E78A87 /* UIImage+LLAVPlayer.m in Sources */,
 				AE5D2CC720215DE6009E960B /* AppDelegate.m in Sources */,
+				AE8558D5202872FD00E78A87 /* LLAVPlayerView.m in Sources */,
+				AE8558D4202872FD00E78A87 /* LLAVPlayerItem.m in Sources */,
+				AE5D2CDD20215E07009E960B /* ImagesToVideoTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,9 +369,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = UHAV656JUH;
 				INFOPLIST_FILE = ImageToVideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.testBundleId.ImageToVideoDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.testBundleId.ImageToVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -292,9 +385,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UHAV656JUH;
 				INFOPLIST_FILE = ImageToVideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.testBundleId.ImageToVideoDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.testBundleId.ImageToVideo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
