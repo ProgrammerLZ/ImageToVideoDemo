@@ -1,7 +1,7 @@
 # ImageToVideoDemo
 ImageToVideoDemo is a demo for converting a set of images to video.
 
-## Installation
+# Installation
 You can include it into your project by adding the source file directly.
 
 ##Usage
