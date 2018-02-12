@@ -28,7 +28,6 @@
 
 - (IBAction)compoundClick:(id)sender {
     [self selectPhotos];
-    NSLog(@"It's a test");
 }
 
 - (void) selectPhotos
