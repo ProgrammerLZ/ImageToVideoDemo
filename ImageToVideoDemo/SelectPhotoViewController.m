@@ -44,8 +44,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    self.transformer = nil;
-    NSLog(@"Test transformer:%@",self.transformer);
 }
 - (void) uiInit
 {
@@ -71,6 +69,10 @@
     self.selectIndexPathArr = [NSMutableArray array];
     self.transformer = [ImagesToVideoTool new];
     [self precachePhotos];
+    //FIXME:Test code.
+    for (int i = 0; i < 100; i++) {
+        [self.selectIndexPathArr addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
 }
 
 - (void) precachePhotos
@@ -107,15 +109,18 @@
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     options.resizeMode = PHImageRequestOptionsResizeModeExact;
-    [self.cachingImageManager requestImageForAsset:asset targetSize:ITEM_SIZE contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        @autoreleasepool
-        {
-            if (result != nil) {
-                cell.photoImage.image = result;
-            }
-        }
-    }];
-
+    [self.cachingImageManager requestImageForAsset:asset targetSize:ITEM_SIZE
+                                       contentMode:PHImageContentModeAspectFill
+                                           options:options
+                                     resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                         @autoreleasepool
+                                         {
+                                             if (result != nil) {
+                                                 cell.photoImage.image = result;
+                                             }
+                                         }
+                                     }];
+    
     if (self.selectIndexPathArr.count == 0) {
         cell.selectImage.hidden = YES;
     }else{
@@ -140,7 +145,7 @@
     }else{
         [self.selectIndexPathArr addObject:indexPath];
     }
-    [self.collectionView reloadData];
+    [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 - (void) back
@@ -167,21 +172,24 @@
             PHAsset *asset = [weakSelf.fetchResult objectAtIndex:indexPath.item];
             PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
             options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-            options.resizeMode = PHImageRequestOptionsResizeModeExact;
+            options.resizeMode = PHImageRequestOptionsResizeModeFast;
             options.synchronous = YES;
             
             
             [weakSelf.cachingImageManager requestImageForAsset:asset
                                                        targetSize:DEFAULTFRAMESIZE
-                                               contentMode:PHImageContentModeAspectFill
+                                               contentMode:PHImageContentModeDefault
                                                           options:options
                                                     resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info)
              {
                      if (result != nil) {
                          [imageArr addObject:result];
+                     }else{
+                         NSLog(@"Result is nil");
                      }
                      if (imageArr.count == weakSelf.selectIndexPathArr.count) {
                          NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//                         NSString *path = @"/Users/liuzhe/Desktop";
                          path =[path stringByAppendingString:@"/movie.mp4"];
                          [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
                          NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"song.mp3" ofType:nil];
