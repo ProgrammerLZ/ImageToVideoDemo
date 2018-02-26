@@ -46,7 +46,7 @@
     }
     NSParameterAssert(videoWriter);
     
-    NSDictionary *videoSettings = @{AVVideoCodecKey: AVVideoCodecJPEG,
+    NSDictionary *videoSettings = @{AVVideoCodecKey: AVVideoCodecH264,
                                     AVVideoWidthKey: [NSNumber numberWithInt:size.width],
                                     AVVideoHeightKey: [NSNumber numberWithInt:size.height]};
     
@@ -78,7 +78,7 @@
                 buffer = NULL;
             } else {
                 buffer = [self pixelBufferFromCGImage:[array[i] CGImage]
-                                                 size:size];
+                                                 size:CGSizeMake(480, 480)];
             }
             if (buffer) {
 
@@ -105,7 +105,7 @@
                                     UIImage *fadeinImage = [array objectAtIndex:i+1];
                                     buffer = [self crossFadeImage:baseImage
                                                           toImage:fadeinImage
-                                                           atSize:size
+                                                           atSize:CGSizeMake(480, 480)
                                                     withFadeAlpha:j/framesToFadeCount
                                                     withBaseAlpha:1 - j/framesToFadeCount];
 
@@ -166,9 +166,7 @@
                 [videoWriter finishWritingWithCompletionHandler:^{
                     if (videoWriter.status == AVAssetWriterStatusCompleted) {
                         NSLog(@"图片->视频：转换成功");
-                        //FIXME
-//                        [self generateWarterMarkWithVideoPath:path size:size callBackBlock:callbackBlock];
-                        [self addMusicForVideoWithVideoPath:path audioPath:audioPath callBackBlock:callbackBlock];
+                        [self generateWarterMarkWithVideoPath:path size:size callBackBlock:callbackBlock];
                     } else {
                         if (callbackBlock) {
                             NSLog(@"图片->视频：转换失败\n失败原因：%@",videoWriter.error);
@@ -177,24 +175,6 @@
                     }
                 }];
                 CVPixelBufferPoolRelease(adaptor.pixelBufferPool);
-                
-                
-                //TEST
-                
-                
-                //TEST
-                
-                
-                //TEST
-                
-                
-                //TEST
-                
-                
-                //TEST
-                
-                
-                //TEST 
 
                 break;
             }
@@ -212,27 +192,18 @@
     NSDictionary *options = @{(id)kCVPixelBufferCGImageCompatibilityKey: @YES,
                               (id)kCVPixelBufferCGBitmapContextCompatibilityKey: @YES};
     CVPixelBufferRef pxbuffer = NULL;
-    CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault,
-                                          imageSize.width,
-                                          imageSize.height,
-                                          kCVPixelFormatType_32ARGB,
-                                          (__bridge CFDictionaryRef) options,
-                                          &pxbuffer);
-    
+    CVReturn status = CVPixelBufferCreate(kCFAllocatorDefault, imageSize.width,
+                                          imageSize.height, kCVPixelFormatType_32ARGB, (__bridge CFDictionaryRef) options,
+                                              &pxbuffer);
     NSParameterAssert(status == kCVReturnSuccess && pxbuffer != NULL);
     
     CVPixelBufferLockBaseAddress(pxbuffer, 0);
-    
     void *pxdata = CVPixelBufferGetBaseAddress(pxbuffer);
     NSParameterAssert(pxdata != NULL);
     
     CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(pxdata,
-                                                 imageSize.width,
-                                                 imageSize.height,
-                                                 8,
-                                                 imageSize.width * 4,
-                                                 rgbColorSpace,
+    CGContextRef context = CGBitmapContextCreate(pxdata, imageSize.width,
+                                                 imageSize.height, 8, imageSize.width * 4, rgbColorSpace,
                                                  kCGImageAlphaNoneSkipFirst);
 
     NSParameterAssert(context);
@@ -334,17 +305,21 @@
                                                  imageSize.height, 8, 4*imageSize.width, rgbColorSpace,
                                                  kCGImageAlphaNoneSkipFirst);
     NSParameterAssert(context);
-    CGRect fadeImageDrawRect = [self getAppropriateImageRectWithImage:myFadeInImage videoSize:imageSize];
-    CGContextBeginTransparencyLayer(context, NULL);
-    CGContextSetAlpha( context, fadeAlpha );
-    CGContextDrawImage(context, fadeImageDrawRect, myFadeInImage);
-
+    
     CGRect baseImageDrawRect = [self getAppropriateImageRectWithImage:myBaseImage videoSize:imageSize];
+
+    CGContextBeginTransparencyLayer(context, nil);
     CGContextSetAlpha(context, baseAlpha);
     CGContextDrawImage(context, baseImageDrawRect, myBaseImage);
     CGContextEndTransparencyLayer(context);
     
+    CGRect fadeImageDrawRect = [self getAppropriateImageRectWithImage:myFadeInImage videoSize:imageSize];
 
+    CGContextBeginTransparencyLayer(context, nil);
+    CGContextSetAlpha( context, fadeAlpha );
+    CGContextDrawImage(context, fadeImageDrawRect, myFadeInImage);
+    CGContextEndTransparencyLayer(context);
+    
     CGColorSpaceRelease(rgbColorSpace);
     CGContextRelease(context);
 
@@ -373,10 +348,7 @@
     CGFloat realHeight = CGImageGetHeight(image);
     if (realHeight > realWidth) {
         CGFloat presentWidth = ( videoSize.height / realHeight) * realWidth;
-        drawRect = CGRectMake((videoSize.width - presentWidth) / 2,
-                              0,
-                              presentWidth,
-                              videoSize.height);
+        drawRect = CGRectMake((videoSize.width - presentWidth) / 2, 0, presentWidth, videoSize.height);
     }else if (realWidth > realHeight){
         CGFloat presentHeight = (videoSize.width / realWidth) * realHeight;
         drawRect = CGRectMake(0,

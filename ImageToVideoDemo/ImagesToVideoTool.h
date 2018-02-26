@@ -15,7 +15,6 @@ typedef void(^SuccessBlock)(BOOL success);
 typedef NS_ENUM(NSInteger,TransitionMode)
 {
     TransitionFadeMode = 0,
-    //TODO
     TransitionScrollMode = 1
 };
 

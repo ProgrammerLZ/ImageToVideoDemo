@@ -14,7 +14,6 @@
 		AE5D2CD220215DE6009E960B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE5D2CD020215DE6009E960B /* LaunchScreen.storyboard */; };
 		AE5D2CD520215DE6009E960B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5D2CD420215DE6009E960B /* main.m */; };
 		AE5D2CDD20215E07009E960B /* ImagesToVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */; };
-		AE805E4220439B160085783E /* TestClass.m in Sources */ = {isa = PBXBuildFile; fileRef = AE805E4120439B160085783E /* TestClass.m */; };
 		AE8558AD2026F66700E78A87 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AE8558AC2026F66700E78A87 /* song.mp3 */; };
 		AE8558B3202829A700E78A87 /* SelectPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */; };
 		AE8558B4202829A700E78A87 /* SelectPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8558B2202829A700E78A87 /* SelectPhotoViewController.xib */; };
@@ -44,8 +43,6 @@
 		AE5D2CD420215DE6009E960B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE5D2CDB20215E07009E960B /* ImagesToVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesToVideoTool.h; sourceTree = "<group>"; };
 		AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesToVideoTool.m; sourceTree = "<group>"; };
-		AE805E4020439B160085783E /* TestClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestClass.h; sourceTree = "<group>"; };
-		AE805E4120439B160085783E /* TestClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestClass.m; sourceTree = "<group>"; };
 		AE8558AC2026F66700E78A87 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
 		AE8558B0202829A700E78A87 /* SelectPhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectPhotoViewController.h; sourceTree = "<group>"; };
 		AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoViewController.m; sourceTree = "<group>"; };
@@ -112,8 +109,6 @@
 				AE5D2CC920215DE6009E960B /* ViewController.m */,
 				AE8558B0202829A700E78A87 /* SelectPhotoViewController.h */,
 				AE8558B1202829A700E78A87 /* SelectPhotoViewController.m */,
-				AE805E4020439B160085783E /* TestClass.h */,
-				AE805E4120439B160085783E /* TestClass.m */,
 				AE8558B2202829A700E78A87 /* SelectPhotoViewController.xib */,
 				AE5D2CDB20215E07009E960B /* ImagesToVideoTool.h */,
 				AE5D2CDC20215E07009E960B /* ImagesToVideoTool.m */,
@@ -229,7 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE805E4220439B160085783E /* TestClass.m in Sources */,
 				AE8558BD20282FFC00E78A87 /* PhotoCell.m in Sources */,
 				AE8558D9202872FD00E78A87 /* LLVideoPlayerViewController.m in Sources */,
 				AE8558B3202829A700E78A87 /* SelectPhotoViewController.m in Sources */,
