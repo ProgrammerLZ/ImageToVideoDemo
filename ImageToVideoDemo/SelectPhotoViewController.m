@@ -13,6 +13,7 @@
 #import "ImagesToVideoTool.h"
 #import "LLVideoPlayerViewController.h"
 #import "Tool.h"
+#import "SlideShowController.h"
 
 #define ITEM_SIZE CGSizeMake(250,250)
 @interface SelectPhotoViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -98,7 +99,14 @@
     PHImageRequestOptions *requestOptions = [[PHImageRequestOptions alloc] init];
     requestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     requestOptions.resizeMode = PHImageRequestOptionsResizeModeExact;
-    [self.cachingImageManager startCachingImagesForAssets:assetsArr targetSize:ITEM_SIZE contentMode:PHImageContentModeAspectFill options:requestOptions];
+    [self.cachingImageManager startCachingImagesForAssets:assetsArr
+                                               targetSize:ITEM_SIZE
+                                              contentMode:PHImageContentModeAspectFill
+                                                  options:requestOptions];
+    [self.cachingImageManager startCachingImagesForAssets:assetsArr
+                                               targetSize:DEFAULTFRAMESIZE
+                                              contentMode:PHImageContentModeAspectFill
+                                                  options:requestOptions];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -109,7 +117,8 @@
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     options.resizeMode = PHImageRequestOptionsResizeModeExact;
-    [self.cachingImageManager requestImageForAsset:asset targetSize:ITEM_SIZE
+    [self.cachingImageManager requestImageForAsset:asset
+                                        targetSize:ITEM_SIZE
                                        contentMode:PHImageContentModeAspectFill
                                            options:options
                                      resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
@@ -155,6 +164,7 @@
 
 - (void) ok
 {
+
     if ([self.activity isAnimating]) {
         return;
     }
@@ -170,56 +180,65 @@
             NSIndexPath *indexPath = weakSelf.selectIndexPathArr[i];
             
             PHAsset *asset = [weakSelf.fetchResult objectAtIndex:indexPath.item];
+
             PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
             options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
-            options.resizeMode = PHImageRequestOptionsResizeModeFast;
-            options.synchronous = YES;
-            
-            
+            options.resizeMode = PHImageRequestOptionsResizeModeExact;
+//            options.synchronous = YES;
+
             [weakSelf.cachingImageManager requestImageForAsset:asset
-                                                       targetSize:DEFAULTFRAMESIZE
-                                               contentMode:PHImageContentModeDefault
-                                                          options:options
-                                                    resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info)
+                                                    targetSize:DEFAULTFRAMESIZE
+                                                   contentMode:PHImageContentModeAspectFill
+                                                       options:options
+                                                 resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info)
              {
-                     if (result != nil) {
-                         [imageArr addObject:result];
-                     }else{
-                         NSLog(@"Result is nil");
-                     }
-                     if (imageArr.count == weakSelf.selectIndexPathArr.count) {
-                         NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//                         NSString *path = @"/Users/liuzhe/Desktop";
-                         path =[path stringByAppendingString:@"/movie.mp4"];
-                         [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
-                         NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"song.mp3" ofType:nil];
-                         weakSelf.transformer.animateImage = [UIImage imageNamed:@"star"];
-                         weakSelf.transformer.photoFrame = [UIImage imageNamed:@"HeadFrame"];
-                         [weakSelf.transformer writeImageAsMovie:imageArr
-                                                          toPath:path
-                                                       audioPath:musicPath
-                                                            size:DEFAULTFRAMESIZE
-                                                             fps:DEFAULTFRAMERATE
-                                              animateTransitions:YES
-                                                  transitionMode:TransitionFadeMode
-                                               withCallbackBlock:^(BOOL success) {
-                                                   if (success) {
-                                                       NSLog(@"TRANSFORMER SUCCESS");
+                 if (result != nil) {
+                     [imageArr addObject:result];
+                 }else{
+                     NSLog(@"Result is nil");
+                 }
+                 if (imageArr.count == weakSelf.selectIndexPathArr.count) {
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         SlideShowController *controller = [[SlideShowController alloc] initWithImageArray:imageArr];
+                         UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:controller];
+                         [self presentViewController:navi animated:YES completion:nil];
+                         [self.activity stopAnimating];
+                     });
+                     return;//FIXME
+                     
+                     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+                     //                         NSString *path = @"/Users/liuzhe/Desktop";
+                     path =[path stringByAppendingString:@"/movie.mp4"];
+                     [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
+                     NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"song.mp3" ofType:nil];
+                     weakSelf.transformer.animateImage = [UIImage imageNamed:@"star"];
+                     weakSelf.transformer.photoFrame = [UIImage imageNamed:@"HeadFrame"];
+                     [weakSelf.transformer writeImageAsMovie:imageArr
+                                                      toPath:path
+                                                   audioPath:musicPath
+                                                        size:DEFAULTFRAMESIZE
+                                                         fps:DEFAULTFRAMERATE
+                                          animateTransitions:YES
+                                              transitionMode:TransitionFadeMode
+                                           withCallbackBlock:^(BOOL success) {
+                                               if (success) {
+                                                   NSLog(@"TRANSFORMER SUCCESS");
+                                                   [Tool testMethod_GetCurrentTime];
+                                                   NSLog(@"合成完毕");
+                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                       [weakSelf.activity stopAnimating];
                                                        [Tool testMethod_GetCurrentTime];
-                                                       NSLog(@"合成完毕");
-                                                       dispatch_async(dispatch_get_main_queue(), ^{
-                                                           [weakSelf.activity stopAnimating];
-                                                           [Tool testMethod_GetCurrentTime];
-                                                           LLVideoPlayerViewController *videoPlayerVC = [[LLVideoPlayerViewController alloc] initWithVideoUrl:[NSURL fileURLWithPath:path]];
-                                                           
-                                                           [weakSelf presentViewController:videoPlayerVC animated:YES completion:^{
-                                                           }];
-                                                       });
-                                                   }else{
-                                                       NSLog(@"TRANSFORMER FAILED");
-                                                   }
-                                               }];
-                     }
+                                                       LLVideoPlayerViewController *videoPlayerVC = [[LLVideoPlayerViewController alloc] initWithVideoUrl:[NSURL fileURLWithPath:path]];
+                                                       
+                                                       [weakSelf presentViewController:videoPlayerVC animated:YES completion:^{
+                                                       }];
+                                                   });
+                                               }else{
+                                                   NSLog(@"TRANSFORMER FAILED");
+                                               }
+                                           }];
+                 }
              }];
         }
     });

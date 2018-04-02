@@ -15,7 +15,7 @@ typedef void(^SuccessBlock)(BOOL success);
 typedef NS_ENUM(NSInteger,TransitionMode)
 {
     TransitionFadeMode = 0,
-    //TODO
+    //TODO:添加新的转场效果
     TransitionScrollMode = 1
 };
 

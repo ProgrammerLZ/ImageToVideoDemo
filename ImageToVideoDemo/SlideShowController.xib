@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SlideShowController">
+            <connections>
+                <outlet property="backButton" destination="g8a-42-rGM" id="TaD-6O-gdq"/>
+                <outlet property="frontImage" destination="ZJR-hE-qxv" id="7kC-Co-MPs"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="warterMarkImage" destination="Gfj-du-5gV" id="qZc-ex-lPD"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPj-vz-Iq8">
+                    <rect key="frame" x="0.0" y="103.5" width="375" height="480"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZJR-hE-qxv">
+                            <rect key="frame" x="0.0" y="52.5" width="375" height="375"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ZJR-hE-qxv" secondAttribute="height" multiplier="1:1" id="vQC-RM-9d9"/>
+                            </constraints>
+                        </imageView>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gfj-du-5gV">
+                            <rect key="frame" x="0.0" y="52.5" width="375" height="375"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="ZJR-hE-qxv" firstAttribute="centerX" secondItem="cPj-vz-Iq8" secondAttribute="centerX" id="0IJ-o0-TCQ"/>
+                        <constraint firstAttribute="height" constant="480" id="6gB-rs-HOT"/>
+                        <constraint firstItem="Gfj-du-5gV" firstAttribute="bottom" secondItem="ZJR-hE-qxv" secondAttribute="bottom" id="BuH-8Q-g3a"/>
+                        <constraint firstAttribute="trailing" secondItem="ZJR-hE-qxv" secondAttribute="trailing" id="Pgj-uc-Fli"/>
+                        <constraint firstItem="Gfj-du-5gV" firstAttribute="trailing" secondItem="ZJR-hE-qxv" secondAttribute="trailing" id="QAX-o0-MvJ"/>
+                        <constraint firstItem="ZJR-hE-qxv" firstAttribute="leading" secondItem="cPj-vz-Iq8" secondAttribute="leading" id="YdX-Qy-e6t"/>
+                        <constraint firstItem="Gfj-du-5gV" firstAttribute="top" secondItem="ZJR-hE-qxv" secondAttribute="top" id="krv-zv-36L"/>
+                        <constraint firstItem="ZJR-hE-qxv" firstAttribute="centerY" secondItem="cPj-vz-Iq8" secondAttribute="centerY" id="rZY-An-Yd7"/>
+                        <constraint firstItem="Gfj-du-5gV" firstAttribute="leading" secondItem="ZJR-hE-qxv" secondAttribute="leading" id="zGh-D2-g3S"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" alpha="0.45000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8a-42-rGM">
+                    <rect key="frame" x="16" y="40" width="30" height="30"/>
+                    <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="XuO-mt-HMd"/>
+                        <constraint firstAttribute="height" constant="30" id="mXz-qy-Qqv"/>
+                    </constraints>
+                    <state key="normal" image="back"/>
+                    <connections>
+                        <action selector="dissmiss:" destination="-1" eventType="touchUpInside" id="XBf-kI-nyz"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="g8a-42-rGM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="0L3-HZ-eL1"/>
+                <constraint firstItem="g8a-42-rGM" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="Mn0-ma-yAO"/>
+                <constraint firstItem="cPj-vz-Iq8" firstAttribute="centerX" secondItem="Q5M-cg-NOt" secondAttribute="centerX" id="Rpn-xv-UBv"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cPj-vz-Iq8" secondAttribute="trailing" id="T1q-um-VD6"/>
+                <constraint firstItem="cPj-vz-Iq8" firstAttribute="centerY" secondItem="Q5M-cg-NOt" secondAttribute="centerY" id="VUh-uT-vdT"/>
+                <constraint firstItem="cPj-vz-Iq8" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="caG-On-lEj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="15" width="3024" height="3024"/>
+        <image name="back" width="72" height="72"/>
+    </resources>
+</document>
